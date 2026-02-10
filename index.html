@@ -1,3 +1,4 @@
+., [10.02.2026 18:03]
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -6,152 +7,196 @@
 <title>Валентинка 💖</title>
 
 <style>
-  body {
-    margin: 0;
-    height: 100vh;
-    background: linear-gradient(135deg, #ffdde9, #fff1f6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Arial', sans-serif;
-    overflow: hidden;
-  }
+* {
+  box-sizing: border-box;
+}
 
-  .card {
-    background: white;
-    padding: 30px 25px 40px;
-    border-radius: 25px;
-    text-align: center;
-    width: 90%;
-    max-width: 360px;
-    box-shadow: 0 20px 40px rgba(255, 77, 136, 0.25);
-  }
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ffb6c1, #ffe4ec);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: hidden;
+}
 
-  h1 {
-    font-size: 22px;
-    min-height: 80px;
-    transition: all 0.3s ease;
-  }
+.card {
+  background: white;
+  width: 90%;
+  max-width: 380px;
+  padding: 32px 26px 42px;
+  border-radius: 28px;
+  text-align: center;
+  box-shadow: 0 30px 70px rgba(255, 105, 135, 0.35);
+}
 
-  .buttons {
-    position: relative;
-    height: 120px;
-    margin-top: 20px;
-  }
+#text {
+  font-size: 22px;
+  min-height: 110px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
 
-  button {
-    position: absolute;
-    border: none;
-    border-radius: 14px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
+.buttons {
+  position: relative;
+  height: 140px;
+  margin-top: 25px;
+}
 
-  #yes {
-    background: #ff4d88;
-    color: white;
-    width: 120px;
-    height: 50px;
-    left: 20px;
-    top: 35px;
-    animation: pulse 1.2s infinite;
-  }
+button {
+  position: absolute;
+  border: none;
+  border-radius: 18px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
 
-  #no {
-    background: #e0e0e0;
-    color: #333;
-    width: 120px;
-    height: 50px;
-    right: 20px;
-    top: 35px;
-  }
+#yes {
+  background: linear-gradient(135deg, #ff4d88, #ff7aa8);
+  color: white;
+  width: 140px;
+  height: 58px;
+  left: 15px;
+  top: 40px;
+  box-shadow: 0 12px 30px rgba(255,77,136,0.45);
+}
 
-  @keyframes pulse {
-    0%,100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-  }
+#no {
+  background: #ededed;
+  color: #444;
+  width: 140px;
+  height: 58px;
+  right: 15px;
+  top: 40px;
+}
 
-  .heart {
-    position: fixed;
-    bottom: -20px;
-    font-size: 24px;
-    animation: fly 3s linear forwards;
-  }
+.heart {
+  position: fixed;
+  bottom: -30px;
+  font-size: 26px;
+  animation: fly 4s linear forwards;
+}
 
-  @keyframes fly {
-    to {
-      transform: translateY(-110vh) rotate(360deg);
-      opacity: 0;
-    }
+@keyframes fly {
+  to {
+    transform: translateY(-120vh) rotate(360deg);
+    opacity: 0;
   }
+}
 </style>
 </head>
 
 <body>
 
 <div class="card">
-  <h1 id="text">Будешь моей Валентинкой? 💖</h1>
+  <div id="text">Будешь моей Валентинкой? 💖</div>
 
-  <div class="buttons">
+  <div class="buttons" id="buttons">
     <button id="yes">ДА</button>
     <button id="no">НЕТ</button>
   </div>
 </div>
 
 <script>
-const texts = [
-  "Потому что вместе смеяться всегда веселее",
-  "Потому что я буду поддерживать тебя",
-  "Потому что ты особенная",
-  "Потому что ты делаешь дни ярче",
+const phrases = [
+  "Потому что вместе смеяться приятнее",
   "Потому что рядом с тобой тепло",
-  "Потому что я ценю тебя",
-  "Потому что ты заставляешь улыбаться",
-  "Потому что вместе мы сильнее",
-  "Потому что ты заслуживаешь любви",
-  "Потому что я хочу быть рядом"
+  "Потому что ты делаешь дни ярче",
+  "Потому что ты умеешь поддерживать",
+  "Потому что с тобой спокойно",
+  "Потому что ты особенная",
+  "Потому что ты даришь улыбки",
+  "Потому что рядом с тобой хорошо",
+  "Потому что ты заслуживаешь заботы",
+  "Потому что ты вдохновляешь",
+  "Потому что ты делаешь мир лучше",
+  "Потому что ты умеешь радовать",
+  "Потому что с тобой не скучно",
+  "Потому что ты искренняя",
+  "Потому что ты умеешь слушать",
+  "Потому что ты очень милая",
+  "Потому что ты светлая",
+  "Потому что ты классная",
+  "Потому что ты добрая",
+  "Потому что ты настоящая",
+  "Потому что ты умеешь удивлять",
+  "Потому что ты смешная (в хорошем смысле)",
+  "Потому что ты внимательная",
+  "Потому что ты заботливая",
+  "Потому что ты честная",
+  "Потому что ты тёплая душой",
+  "Потому что ты вдохновляешь быть лучше",
+  "Потому что ты приносишь радость",
+  "Потому что ты умеешь быть рядом",
+  "Потому что ты ценная",
+  "Потому что ты делаешь моменты важными",
+  "Потому что ты даришь уют",
+  "Потому что ты наполняешь",
+  "Потому что ты очень приятная",
+  "Потому что ты делаешь сердце спокойнее",
+  "Потому что ты особенный человек",
+  "Потому что ты умеешь поддержать словом",
+  "Потому что ты искренняя в мелочах",
+  "Потому что ты умеешь радоваться",
+  "Потому что ты светишься",
+  "Потому что ты мягкая",
+  "Потому что ты внимательна к чувствам",
+  "Потому что ты вызываешь улыбку",
+  "Потому что ты даришь тепло",
+  "Потому что ты создаёшь уют",
+  "Потому что ты хорошая",
+  "Потому что ты важна",
+  "Потому что ты нужна",
+  "Потому что ты просто ты"
 ];
 
-let index = 0;
+let i = 0;
 let yesScale = 1;
 let noScale = 1;
 
-const textEl = document.getElementById("text");
-const yesBtn = document.getElementById("yes");
-const noBtn = document.getElementById("no");
-const buttons = document.querySelector(".buttons");
+const text = document.getElementById("text");
+const yes = document.getElementById("yes");
+const no = document.getElementById("no");
+const buttons = document.getElementById("buttons");
 
-noBtn.onclick = () => {
-  if (index < texts.length) {
-    textEl.textContent = texts[index];
-    index++;
+no.onclick = () => {
+  if (i < phrases.length) {
+    text.style.opacity = 0;
+    setTimeout(() => {
+      text.textContent = phrases[i];
+      text.style.opacity = 1;
+      i++;
+    }, 200);
   }
 
-  yesScale += 0.25;
-  noScale -= 0.15;
+  yesScale += 0.15;
+  noScale -= 0.1;
 
-  yesBtn.style.transform = scale(${yesScale});
-  noBtn.style.transform = scale(${noScale});
+  yes.style.transform = scale(${yesScale});
+  no.style.transform = scale(${noScale});
 
   if (noScale <= 0.3) {
-    noBtn.style.display = "none";
+    no.style.opacity = 0;
+    setTimeout(() => no.style.display = "none", 300);
   }
 };
 
-yesBtn.onclick = () => {
+., [10.02.2026 18:03]
+yes.onclick = () => {
   buttons.style.display = "none";
-  textEl.textContent = "УРААА ❤️";
+  text.textContent = "УРААА ❤️";
+  text.style.transform = "scale(1.4)";
 
-  for (let i = 0; i < 25; i++) {
+  for (let j = 0; j < 35; j++) {
     const heart = document.createElement("div");
     heart.className = "heart";
     heart.textContent = "❤️";
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (2 + Math.random() * 2) + "s";
+    heart.style.animationDuration = (3 + Math.random() * 2) + "s";
     document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 4000);
+    setTimeout(() => heart.remove(), 5000);
   }
 };
 </script>
