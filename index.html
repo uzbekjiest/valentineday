@@ -2,76 +2,159 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Будешь моим?</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Валентинка 💖</title>
+
 <style>
   body {
-    font-family: Arial, sans-serif;
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffdde9, #fff1f6);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #ffe6f0, #fff0f5);
-    margin: 0;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
   }
+
+  .card {
+    background: white;
+    padding: 30px 25px 40px;
+    border-radius: 25px;
+    text-align: center;
+    width: 90%;
+    max-width: 360px;
+    box-shadow: 0 20px 40px rgba(255, 77, 136, 0.25);
+  }
+
+  h1 {
+    font-size: 22px;
+    min-height: 80px;
+    transition: all 0.3s ease;
+  }
+
   .buttons {
     position: relative;
-    width: 300px;
     height: 120px;
+    margin-top: 20px;
   }
+
   button {
     position: absolute;
     border: none;
-    border-radius: 10px;
-    cursor: pointer;
+    border-radius: 14px;
     font-size: 18px;
+    cursor: pointer;
     transition: all 0.3s ease;
   }
+
   #yes {
-    width: 120px;
-    height: 50px;
     background: #ff4d88;
     color: white;
-    left: 40px;
-    top: 35px;
-    animation: pulse 1s infinite;
-  }
-  #no {
     width: 120px;
     height: 50px;
-    background: #ddd;
-    right: 40px;
+    left: 20px;
+    top: 35px;
+    animation: pulse 1.2s infinite;
+  }
+
+  #no {
+    background: #e0e0e0;
+    color: #333;
+    width: 120px;
+    height: 50px;
+    right: 20px;
     top: 35px;
   }
+
   @keyframes pulse {
     0%,100% { transform: scale(1); }
     50% { transform: scale(1.1); }
   }
+
+  .heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 24px;
+    animation: fly 3s linear forwards;
+  }
+
+  @keyframes fly {
+    to {
+      transform: translateY(-110vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
 </style>
 </head>
+
 <body>
-<div class="buttons">
-  <button id="yes">ДА</button>
-  <button id="no">НЕТ</button>
+
+<div class="card">
+  <h1 id="text">Будешь моей Валентинкой? 💖</h1>
+
+  <div class="buttons">
+    <button id="yes">ДА</button>
+    <button id="no">НЕТ</button>
+  </div>
 </div>
 
 <script>
+const texts = [
+  "Потому что вместе смеяться всегда веселее",
+  "Потому что я буду поддерживать тебя",
+  "Потому что ты особенная",
+  "Потому что ты делаешь дни ярче",
+  "Потому что рядом с тобой тепло",
+  "Потому что я ценю тебя",
+  "Потому что ты заставляешь улыбаться",
+  "Потому что вместе мы сильнее",
+  "Потому что ты заслуживаешь любви",
+  "Потому что я хочу быть рядом"
+];
+
+let index = 0;
+let yesScale = 1;
+let noScale = 1;
+
+const textEl = document.getElementById("text");
 const yesBtn = document.getElementById("yes");
 const noBtn = document.getElementById("no");
-let yesSize = 1, noSize = 1;
+const buttons = document.querySelector(".buttons");
 
 noBtn.onclick = () => {
-  yesSize += 0.2;
-  noSize -= 0.15;
-  yesBtn.style.transform = "scale(" + yesSize + ")";
-  noBtn.style.transform = "scale(" + noSize + ")";
-  if (noSize <= 0.3) noBtn.style.display = "none";
+  if (index < texts.length) {
+    textEl.textContent = texts[index];
+    index++;
+  }
+
+  yesScale += 0.25;
+  noScale -= 0.15;
+
+  yesBtn.style.transform = scale(${yesScale});
+  noBtn.style.transform = scale(${noScale});
+
+  if (noScale <= 0.3) {
+    noBtn.style.display = "none";
+  }
 };
 
 yesBtn.onclick = () => {
-  yesBtn.innerText = "❤️ УРА!";
-  yesBtn.style.background = "#ff99bb";
-  yesBtn.style.transform = "scale(1.8)";
+  buttons.style.display = "none";
+  textEl.textContent = "УРААА ❤️";
+
+  for (let i = 0; i < 25; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.textContent = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (2 + Math.random() * 2) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 4000);
+  }
 };
 </script>
+
 </body>
 </html>
