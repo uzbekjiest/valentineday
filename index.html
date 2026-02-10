@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Будешь моим?</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffe6f0, #fff0f5);
+    margin: 0;
+  }
+  .buttons {
+    position: relative;
+    width: 300px;
+    height: 120px;
+  }
+  button {
+    position: absolute;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s ease;
+  }
+  #yes {
+    width: 120px;
+    height: 50px;
+    background: #ff4d88;
+    color: white;
+    left: 40px;
+    top: 35px;
+    animation: pulse 1s infinite;
+  }
+  #no {
+    width: 120px;
+    height: 50px;
+    background: #ddd;
+    right: 40px;
+    top: 35px;
+  }
+  @keyframes pulse {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+</style>
+</head>
+<body>
+<div class="buttons">
+  <button id="yes">ДА</button>
+  <button id="no">НЕТ</button>
+</div>
+
+<script>
+const yesBtn = document.getElementById("yes");
+const noBtn = document.getElementById("no");
+let yesSize = 1, noSize = 1;
+
+noBtn.onclick = () => {
+  yesSize += 0.2;
+  noSize -= 0.15;
+  yesBtn.style.transform = "scale(" + yesSize + ")";
+  noBtn.style.transform = "scale(" + noSize + ")";
+  if (noSize <= 0.3) noBtn.style.display = "none";
+};
+
+yesBtn.onclick = () => {
+  yesBtn.innerText = "❤️ УРА!";
+  yesBtn.style.background = "#ff99bb";
+  yesBtn.style.transform = "scale(1.8)";
+};
+</script>
+</body>
+</html>
