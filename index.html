@@ -1,84 +1,64 @@
-., [10.02.2026 18:03]
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Валентинка 💖</title>
-
 <style>
-* {
-  box-sizing: border-box;
-}
-
+* { box-sizing: border-box; margin:0; padding:0; }
 body {
-  margin: 0;
-  height: 100vh;
-  background: linear-gradient(135deg, #ffb6c1, #ffe4ec);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffb6c1, #ffe4ec);
   overflow: hidden;
 }
-
 .card {
-  background: white;
+  background:white;
+  padding: 30px 20px 40px;
+  border-radius: 25px;
+  text-align:center;
+  max-width: 360px;
   width: 90%;
-  max-width: 380px;
-  padding: 32px 26px 42px;
-  border-radius: 28px;
-  text-align: center;
-  box-shadow: 0 30px 70px rgba(255, 105, 135, 0.35);
+  box-shadow:0 25px 60px rgba(0,0,0,0.15);
 }
-
 #text {
-  font-size: 22px;
-  min-height: 110px;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  font-size:22px;
+  min-height:100px;
+  transition: all 0.3s ease;
 }
-
 .buttons {
-  position: relative;
-  height: 140px;
-  margin-top: 25px;
+  display:flex;
+  gap:16px;
+  justify-content:center;
+  margin-top:25px;
 }
-
 button {
-  position: absolute;
-  border: none;
-  border-radius: 18px;
-  font-size: 18px;
-  cursor: pointer;
+  border:none;
+  border-radius:16px;
+  font-size:18px;
+  cursor:pointer;
   transition: transform 0.3s ease, opacity 0.3s ease;
+  width:130px;
+  height:55px;
 }
-
 #yes {
   background: linear-gradient(135deg, #ff4d88, #ff7aa8);
-  color: white;
-  width: 140px;
-  height: 58px;
-  left: 15px;
-  top: 40px;
-  box-shadow: 0 12px 30px rgba(255,77,136,0.45);
+  color:white;
+  box-shadow: 0 10px 25px rgba(255,77,136,0.4);
 }
-
 #no {
-  background: #ededed;
-  color: #444;
-  width: 140px;
-  height: 58px;
-  right: 15px;
-  top: 40px;
+  background:#ededed;
+  color:#444;
 }
-
 .heart {
   position: fixed;
   bottom: -30px;
-  font-size: 26px;
+  font-size:26px;
   animation: fly 4s linear forwards;
 }
-
 @keyframes fly {
   to {
     transform: translateY(-120vh) rotate(360deg);
@@ -87,12 +67,9 @@ button {
 }
 </style>
 </head>
-
 <body>
-
 <div class="card">
   <div id="text">Будешь моей Валентинкой? 💖</div>
-
   <div class="buttons" id="buttons">
     <button id="yes">ДА</button>
     <button id="no">НЕТ</button>
@@ -122,7 +99,7 @@ const phrases = [
   "Потому что ты добрая",
   "Потому что ты настоящая",
   "Потому что ты умеешь удивлять",
-  "Потому что ты смешная (в хорошем смысле)",
+  "Потому что ты смешная",
   "Потому что ты внимательная",
   "Потому что ты заботливая",
   "Потому что ты честная",
@@ -156,24 +133,23 @@ let i = 0;
 let yesScale = 1;
 let noScale = 1;
 
-const text = document.getElementById("text");
+const textEl = document.getElementById("text");
 const yes = document.getElementById("yes");
 const no = document.getElementById("no");
 const buttons = document.getElementById("buttons");
 
 no.onclick = () => {
   if (i < phrases.length) {
-    text.style.opacity = 0;
+    textEl.style.opacity = 0;
     setTimeout(() => {
-      text.textContent = phrases[i];
-      text.style.opacity = 1;
+      textEl.textContent = phrases[i];
+      textEl.style.opacity = 1;
       i++;
     }, 200);
   }
 
   yesScale += 0.15;
   noScale -= 0.1;
-
   yes.style.transform = scale(${yesScale});
   no.style.transform = scale(${noScale});
 
@@ -183,13 +159,13 @@ no.onclick = () => {
   }
 };
 
-., [10.02.2026 18:03]
 yes.onclick = () => {
   buttons.style.display = "none";
-  text.textContent = "УРААА ❤️";
-  text.style.transform = "scale(1.4)";
+  textEl.textContent = "УРААА ❤️";
+  textEl.style.transform = "scale(1.4)";
 
-  for (let j = 0; j < 35; j++) {
+., [10.02.2026 18:09]
+for (let j = 0; j < 35; j++) {
     const heart = document.createElement("div");
     heart.className = "heart";
     heart.textContent = "❤️";
@@ -200,6 +176,5 @@ yes.onclick = () => {
   }
 };
 </script>
-
 </body>
 </html>
